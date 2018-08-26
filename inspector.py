@@ -12,7 +12,7 @@ def available_gpu_devices():
     return True
 
 
-def perform_cpu_gpu_computations(device):
+def perform_matrix_operations(device):
     # create a matrix of [2, 3] shape
     print("Matrix A")
     a = mx.nd.array([[1.0,2.0,3.0], [4.0,5.0,6.0]], ctx=device)
@@ -37,7 +37,7 @@ def test_cpu_gpu_computations():
     print("\n++++++++++++++++++++++++++++++")
     print("... placing matrix operations on available CPU devices")
     cpu_device = mx.cpu()
-    perform_cpu_gpu_computations(cpu_device)
+    perform_matrix_operations(cpu_device)
     print("++++++++++++++++++++++++++++++")
 
     # Perform GPU computations
@@ -46,7 +46,7 @@ def test_cpu_gpu_computations():
     if available_gpu_devices():
         print("... placing matrix operations on available GPU devices")
         gpu_device = mx.gpu()
-        perform_cpu_gpu_computations(gpu_device)
+        perform_matrix_operations(gpu_device)
     else:
         print("... GPU devices or libraries are not present!")
     print("++++++++++++++++++++++++++++++")
